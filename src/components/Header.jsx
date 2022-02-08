@@ -3,7 +3,7 @@ import punkLogo from "../assets/cryptopunk-logo.png";
 import searchIcon from "../assets/search.png";
 import themeLogoIcon from "../assets/theme-switch.png";
 
-const Header = () => {
+const Header = ({ setNFTSearch, nftSearch }) => {
   return (
     <header className="header">
       <div className="logoContainer">
@@ -13,7 +13,12 @@ const Header = () => {
         <div className="searchIconContainer">
           <img src={searchIcon} alt="" />
         </div>
-        <input className="searchInput" placeholder="Search for NFT by Name" />
+        <input
+          className="searchInput"
+          placeholder="Search for NFT by Name"
+          value={nftSearch}
+          onChange={(e) => setNFTSearch(e.target.value)}
+        />
       </div>
       <div className="headerItemsContainer">
         <p>Drops</p>

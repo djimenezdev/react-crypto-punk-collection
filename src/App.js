@@ -1,6 +1,5 @@
 import "./styles/App.css";
 import Header from "./components/Header";
-// import CollectionCard from "./components/CollectionCard";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Collection from "./components/Collection";
@@ -9,6 +8,8 @@ import Main from "./components/Main";
 function App() {
   const [nfts, setNFTs] = useState([]);
   const [selectedNFT, setSelectedNFT] = useState(null);
+  const [nftSearch, setNFTSearch] = useState("");
+
   useEffect(() => {
     const getNFTs = async () => {
       const openSeaData = await axios.get(
@@ -24,9 +25,13 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
+      <Header setNFTSearch={setNFTSearch} nftSearch={nftSearch} />
       <Main selected={selectedNFT} />
-      <Collection nfts={nfts} setSelectedNFT={setSelectedNFT} />
+      <Collection
+        nfts={nfts}
+        setSelectedNFT={setSelectedNFT}
+        nftSearch={nftSearch}
+      />
     </div>
   );
 }
