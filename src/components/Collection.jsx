@@ -23,22 +23,16 @@ const Collection = ({ nfts, setSelectedNFT, nftSearch }) => {
     <div className="collectionContainer">
       <div className="collection">
         {nftSearch?.length > 0
-          ? nfts
-              ?.filter((nft) => {
-                if (nft.name.toLowerCase().startsWith(nftSearch)) {
-                  return nft.name.toLowerCase().startsWith(nftSearch);
-                }
-              })
-              .map((nft) => (
-                <div key={nft.id} onClick={() => setSelectedNFT(nft)}>
-                  <CollectionCard
-                    id={nft.token_id}
-                    name={nft.name}
-                    traits={nft.traits}
-                    image={nft.image_url}
-                  />
-                </div>
-              ))
+          ? filtered.map((nft) => (
+              <div key={nft.id} onClick={() => setSelectedNFT(nft)}>
+                <CollectionCard
+                  id={nft.token_id}
+                  name={nft.name}
+                  traits={nft.traits}
+                  image={nft.image_url}
+                />
+              </div>
+            ))
           : nfts?.map((nft) => (
               <div key={nft.id} onClick={() => setSelectedNFT(nft)}>
                 <CollectionCard
